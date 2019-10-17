@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseController : MonoBehaviour
+public class ControladorRato : MonoBehaviour
 {
 	Vector3 _currentMousePosition;
 	bool _wasMouseClicked = false;
@@ -37,20 +37,12 @@ public class MouseController : MonoBehaviour
 
 		if ( hit.collider != null && hit.collider.tag == kBalloonTag )
 		{
-			BalloonController bc = hit.collider.gameObject.GetComponent<BalloonController>();
+			ControladorBalao balao = hit.collider.gameObject.GetComponent<ControladorBalao>();
 
-			if (bc != null)
+			if (balao != null)
 			{
-				bc.Pop();
+				balao.Rebenta();
 			}
-		}
-	}
-
-	void OnDrawGizmos()
-	{
-//		if (_wasMouseClicked)
-		{
-			Gizmos.DrawRay(_rayStartPos, Vector3.forward*100f);
 		}
 	}
 }
